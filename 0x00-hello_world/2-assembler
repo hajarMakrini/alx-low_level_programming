@@ -1,2 +1,11 @@
 #!/bin/bash
-gcc -S $CFILE -o 'echo $CFILE | cut -d, -f1' .s
+
+# The C file name will be saved in the variable $CFILE
+CFILE=$1
+
+# The output file should be named the same as the C file, but with the extension .s instead of .c . 
+OUTPUT="${CFILE%.c}.s"
+
+# Generate the assembly code of the C code and save it in the output file
+gcc -S $CFILE -o $OUTPUT
+
