@@ -1,17 +1,16 @@
-#include <stdio.h>
+#include "main.h"
+
 /**
- * main - check the code
- *
- * Description: A C program that uses a void print_alphabet for printing .
- *
- * Return: Always 0 (Success)
-*/
+ * print_alphabet - print all alphabet in lowercase
+ * is written by hajar Makrini
+ */
+
 void print_alphabet(void)
 {
-puts(" with proper grammar, but the outcome is a piece of art. \n");
-}
-int main(void)
-{
-print_alphabet();
-return (0);
+	char lowerletter;
+
+	for (lowerletter = 'a'; lowerletter <= 'z'; lowerletter++)
+		_putchar(lowerletter);
+
+	_putchar('\n');
 }
