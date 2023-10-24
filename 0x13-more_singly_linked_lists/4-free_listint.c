@@ -1,31 +1,22 @@
 #include "lists.h"
-
-/*
- * Task 4. Free list
- */
+#include <stdlib.h>
 
 /**
-  * free_listint - Frees a 'listint_t' list
-  *
-  *@head: Pointer to the head of the list
-  *
-  * Return: None
-  */
+ * free_listint - frees a listint_t list
+ *
+ * @head: the head of the list
+ *
+ * Return: NULL if error
+ */
 
 void free_listint(listint_t *head)
 {
-	/* Temporary pointer declaration */
-	listint_t *temp;
+	listint_t *next;
 
-	while (head)
+	while (head != NULL)
 	{
-		/* Store the current node in 'temp' */
-		temp = head;
-
-		/* Move 'head' to the next node */
-		head = head->next;
-
-		/* Free the memory */
-		free(temp);
+		next = head->next;
+		free(head);
+		head = next;
 	}
 }

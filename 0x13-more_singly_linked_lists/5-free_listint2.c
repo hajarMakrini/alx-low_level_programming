@@ -1,35 +1,23 @@
 #include "lists.h"
-
-/*
- * Task 5. Free
- */
+#include <stdlib.h>
 
 /**
-  * free_listint2 - Frees a listint_t list
-  *
-  * @head: Pointer to the pointer to the head of the list
-  *
-  * Return: None
-  */
+ * free_listint2 - function that frees a listint_t list
+ * @head: a double pointer of lists
+ *
+ * Return: void
+ */
 
 void free_listint2(listint_t **head)
 {
-	/* Temporary pointer declaration */
-	listint_t *temp;
+	listint_t *next;
 
-	/* In case 'head' is empty */
-	if (!head)
+	if (head == NULL)
 		return;
-
-	while (*head)
+	while (*head != NULL)
 	{
-		/* Store the current node in 'temp' */
-		temp = *head;
-
-		/* Move 'head' to the next node */
-		*head = (*head)->next;
-
-		/* Free the memory */
-		free(temp);
+		next = (*head)->next;
+		free(*head);
+		*head = next;
 	}
 }

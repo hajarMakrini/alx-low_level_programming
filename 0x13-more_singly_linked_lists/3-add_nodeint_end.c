@@ -1,49 +1,34 @@
 #include "lists.h"
-
-/*
- * Task 3. Add node at the end
- */
-
+#include <stdlib.h>
 /**
-  * add_nodeint_end - Adds a new node at the end of a 'listint_t' list
+  * add_nodeint_end - add node at end of a listint_t list.
   *
-  * @head: Pointer to the pointer to the head node
-  * @n: Integer value to be stored in the new node (int)
-  *
-  * Return: The address of new element, '0' if fail
+  * @head: head of double pointer
+  * @n: int add the list
+  * Return: NULL if it failed
   */
-
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	/* New node pointer and temporary pointer declaration */
-	listint_t *new_node, *temp;
+	listint_t *new;
+	listint_t *temp;
 
-	/* Allocate memory */
-	new_node = malloc(sizeof(listint_t));
-
-	/* In case allocated memory fail */
-	if (!new_node)
-		return (0);
-
-	/* Set the value of new node */
-	new_node->n = n;
-
-	/* Set the last node to the value NULL */
-	new_node->next = NULL;
-
-	/* In case the list 'head' is empty */
-	if (!*head)
-		*head = new_node;
-
-	else
+	if (head == NULL)
+		return (NULL);
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = NULL;
+	if (*head == NULL)
 	{
-		temp = *head;
-		/* Loop activ untill we reach the last node */
-		while (temp->next != NULL)
-			temp = temp->next;
-		/* Set the last node to the new_node */
-		temp->next = new_node;
+	*head = new;
+		return (new);
 	}
-
-	return (new_node);
-}
+	temp = *head;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = new;
+	return (new);
+}}

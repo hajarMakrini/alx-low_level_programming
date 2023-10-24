@@ -1,27 +1,22 @@
 #include "lists.h"
 
-/*
- * Task 1. List length
- */
-
 /**
-  * listint_len - Returns the number of elements in a linked 'listint_t' list
-  *
-  * @h: List name
-  *
-  * Return: The number of node
-  */
+ * listint_len - the number of elements in a linked listint_t list.
+ *
+ * @h: head pointer
+ *
+ * Return: the number of elements
+ *
+ */
 
 size_t listint_len(const listint_t *h)
 {
-	/* Nodes counter variable declaration */
-	size_t i;
+	size_t count = 0;
 
-	/* Counting the nodes and moving to the next */
-	for (i = 0; h; i++)
+	while (h != NULL)
 	{
-		h = h->next;
+	h = h->next;
+		count++;
 	}
-
-	return (i);
+	return (count);
 }
