@@ -1,58 +1,42 @@
 #include "lists.h"
-
-/*
- * Task 9. Insert
- */
+#include <stdlib.h>
 
 /**
-  * insert_nodeint_at_index - Inserts a new node at a given position
-  *
-  * @head: Pointer to the pointer to the head of the list
-  * @idx: Index where the new node should be added (int)
-  * @n: Data value for the new node (int)
-  *
-  * Return: The address of the new node, NULL if fail
-  */
-
+ * insert_nodeint_at_index - inserting a new node at agiven postion
+ * @head: double pointer
+ * @idx: index of the node
+ * @n: new node value
+ *
+ * Return: the address of new node
+ */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	/* new node, current and loop variable declaration */
-	listint_t *new_node, *current;
 	unsigned int i;
+	listint_t *temp, *new;
 
-	/* Allocate memory */
-	new_node = malloc(sizeof(listint_t));
-
-	/* In case allocated memory fail */
-	if (!new_node)
+	if (head == NULL)
 		return (NULL);
-
-	/* Set the data value for the new node */
-	new_node->n = n;
-
-	/* Inserting at the beginning of the list */
-	if (!idx)
+	if (idx != 0)
 	{
-		new_node->next = *head;
-		*head = new_node;
-		return (new_node);
+		temp = *head;
+		for (i = 0; i < idx - 1 && temp != NULL; i++)
+		{
+			temp = temp->next;
+		}
+		if (temp == NULL)
+			return (NULL);
 	}
-
-	/* Find the node at position idx - 1 */
-	current = *head;
-	for (i = 0; current; i++)
-		current = current->next;
-
-	/* in case idx out of bound */
-	if (!current)
-	{
-		free(new_node);
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
 		return (NULL);
+	new->n = n;
+	if (idx == 0)
+	{
+		new->next = *head;
+		*head = new;
+		return (new);
 	}
-
-	/* Insert the new node at the specified index */
-	new_node->next = current->next;
-	current->next = new_node;
-
-	return (new_node);
+	new->next = temp->next;
+	temp->next = new;
+	return (new);
 }
