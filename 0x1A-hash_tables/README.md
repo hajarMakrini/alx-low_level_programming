@@ -1,2 +1,2 @@
-# C - Hash tables
+# pyth-c Hajar Makrini
 <hr>
