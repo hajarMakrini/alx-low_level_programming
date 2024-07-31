@@ -1,12 +1,12 @@
 #include "main.h"
 
-   /**
-    * _print - moves a string one place to the left and prints the string
-    * @str: string to move
-    * @l: size of string
-    *
-    * Return: void
-    */
+/**
+* _print - moves a string one place to the left and prints the string
+* @str: string to move
+* @l: size of string
+*
+* Return: void
+*/
 void _print(char *str, int l)
 {
 int i, j;
@@ -98,7 +98,6 @@ str[i] = '0';
 str[i] = '\0';
 }
 
-
 /**
 * main - multiply two numbers
 * @argc: number of arguments
@@ -125,7 +124,7 @@ for (l1 = 0; argv[1][l1]; l1++)
 for (l2 = 0; argv[2][l2]; l2++)
 ;
 ln = l1 + l2 + 1;
-a = malloc(ln *sizeof(char));
+a = malloc(ln * sizeof(char));
 if (a == NULL)
 {
 for (ti = 0; e[ti]; ti++)
